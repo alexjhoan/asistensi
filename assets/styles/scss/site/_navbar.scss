@@ -1,0 +1,141 @@
+header {
+  background: $primary;
+  & .wrap_nav {
+    padding: 15px 25px;
+  }
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
+  column-gap: 10px;
+  &_brand {
+    display: flex;
+    position: relative;
+    z-index: 1000;
+    & img {
+      width: 100px;
+    }
+  }
+  &_links {
+    display: block;
+    margin-left: 0;
+    padding-left: 0;
+    & li {
+      list-style: none;
+    }
+    & a {
+      color: $primary_contrasttext;
+      text-transform: uppercase;
+      font-weight: 400;
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-size: .8rem;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &_cart {
+    position: relative;
+    z-index: 1000;
+    & img {
+      width: 20px;
+    }
+  }
+  &_button-toggle {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+  &_button-toggle-icon {
+    display: block;
+    width: 25px;
+    background: $primary_contrasttext;
+    height: 2px;
+    border-radius: 5px;
+    position: relative;
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      background: $primary_contrasttext;
+      border-radius: 5px;
+      height: 2px;
+      left: 0;
+    }
+    &:before {
+      top: -6px;
+    }
+    &:after {
+      bottom: -6px;
+    }
+  }
+}
+
+@media screen and (min-width:768px) {
+  .nav {
+    justify-content: space-between;
+    column-gap: 0px;
+    &_links {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      column-gap: 35px;
+    }
+  }
+}
+
+
+@media screen and (min-width: 992px) {
+  header {
+    & .wrap_nav {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 12px 60px;
+    }
+  }
+  .nav {
+    &_brand {
+      & img {
+        width: 130px;
+      }
+    }
+  }
+  button.nav_button-toggle {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  header {
+    .nav {
+      &_brand {
+        width: calc(100% - 45px);
+      }
+      &_links {
+        position: fixed;
+        right: 0;
+        top: 20px;
+        transform: translateX(100%);
+        width: 100%;
+        max-width: 300px;
+        background: $primary;
+        padding: 30px 15px;
+        z-index: 999;
+        transition: transform 0.3s ease;
+        &.active {
+          transform: translateX(0);
+        }
+        & li:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+
